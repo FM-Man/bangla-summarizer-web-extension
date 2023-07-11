@@ -1,7 +1,7 @@
 {
-    "name": "My YT Bookmarks",
+    "name": "Bengali Text Summarizer",
     "version": "0.1.0",
-    "description": "Saving timestamps in YT videos",
+    "description": "Summerize any Bengali/Bangla text with selecting the text block and right clicking",
     "permissions": ["storage", "tabs"],
     "host_permissions": ["https://*.youtube.com/*"],
     "background": {
