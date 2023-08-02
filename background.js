@@ -1,13 +1,24 @@
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(() => {
+  // Create the context menu item
   chrome.contextMenus.create({
-      "title": 'Summarize selected text',
-      "contexts": ["selection"],
-      "id": "myContextMenuId"
+    id: "customOption",
+    title: "Custom Option",
+    contexts: ["selection"]
   });
 });
-  
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
-  chrome.tabs.create({  
-      url: "http://www.google.com/search?q=" + encodeURIComponent(info.selectionText)
-  });
-})
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "customOption") {
+    // Store the selected text in storage
+    chrome.storage.local.set({ selectedText: info.selectionText });
+
+    // Open the popup window
+    chrome.windows.create({
+      type: "popup",
+      url: "popup.html",
+      width: 220,
+      height: 120
+    });
+  }
+});
+

@@ -1,37 +1,14 @@
 {
-    "name": "Bengali Text Summarizer",
-    "version": "0.1.0",
-    "description": "Summerize any Bengali/Bangla text with selecting the text block and right clicking",
-    "permissions": ["storage", "tabs","contextMenus"],
-    "host_permissions": ["<all_urls>"],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["contentScript.js"]
-      }
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": [
-          "assets/bookmark.png",
-          "assets/play.png",
-          "assets/delete.png",
-          "assets/save.png"
-        ],
-        "matches": ["<all_urls>"]
-      }
-    ],
-    "action": {
-      "default_icon": {
-        "16": "assets/ext-icon.png",
-        "24": "assets/ext-icon.png",
-        "32": "assets/ext-icon.png"
-      },
-      "default_title": "My YT Bookmarks",
-      "default_popup": "popup.html"
-    },
-    "manifest_version": 3
+  "manifest_version": 3,
+  "name": "Context Menu Extension",
+  "version": "1.0",
+  "description": "Adds a custom option to the context menu.",
+  "permissions": ["contextMenus", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icon.png"
+  }
 }
+
