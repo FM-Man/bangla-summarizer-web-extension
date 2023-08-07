@@ -1,6 +1,58 @@
 chrome.storage.local.get("selectedText", (data) => {
   var selectedText = data.selectedText || "No text selected";
   var selectedTextDiv = document.getElementById("selectedText");
-  selectedTextDiv.textContent = selectedText;
+  // selectedTextDiv.textContent = selectedText;
+
+  // Replace with your actual API endpoint URL
+  // var apiUrl = "http://localhost:8080/api/demo";
+
+  // Perform POST API call
+  // fetch(apiUrl, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ text: selectedText }),
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     var responseDiv = document.getElementById("response");
+  //     responseDiv.textContent = data.response;
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //     var responseDiv = document.getElementById("response");
+  //     responseDiv.textContent = "Error occurred while fetching data.";
+  //   });
+
+
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      "text": selectedText
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    var rText;
+
+    fetch("http://localhost:8080/api/demo", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        rText = result.text;
+        console.log(typeof result, result);
+        console.log(rText);
+        selectedTextDiv.textContent = rText;
+      })
+      .catch(error => console.log('error', error));
+
+      selectedTextDiv.textContent = rText;
 });
 
