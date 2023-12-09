@@ -1,6 +1,7 @@
 chrome.storage.local.get("selectedText", (data) => {
   var selectedText = data.selectedText || "No text selected";
-  var selectedTextDiv = document.getElementById("selectedText");
+  var summaryTextDiv = document.getElementById("textSection2");
+  var documentTextDiv = document.getElementById("textSection1");
   // selectedTextDiv.textContent = selectedText;
 
   // Replace with your actual API endpoint URL
@@ -41,18 +42,34 @@ chrome.storage.local.get("selectedText", (data) => {
       redirect: 'follow'
     };
     
-    var rText;
+    var rText,rSum;
 
-    fetch("http://localhost:8080/api/demo", requestOptions)
+    fetch("http://127.0.0.1:8000/v2/summarize", requestOptions)
       .then(response => response.json())
       .then(result => {
         rText = result.text;
+        rSum = result.summary;
         console.log(typeof result, result);
         console.log(rText);
-        selectedTextDiv.textContent = rText;
+        summaryTextDiv.innerText = rSum;
+        documentTextDiv.innerText = rText
       })
       .catch(error => console.log('error', error));
 
-      selectedTextDiv.textContent = rText;
+      // selectedTextDiv.innerText = rSum;
 });
+
+
+function copyText(elementId) {
+  const textElement = document.getElementById(elementId).querySelector('p');
+  const text = textElement.innerText;
+
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('Text copied to clipboard: ' + text);
+    })
+    .catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+}
 

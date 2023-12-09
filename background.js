@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener(() => {
   // Create the context menu item
   chrome.contextMenus.create({
     id: "customOption",
-    title: "Custom Option",
+    title: "Summarize Selected Text",
     contexts: ["selection"]
   });
 });
@@ -16,8 +16,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.windows.create({
       type: "popup",
       url: "popup.html",
-      width: 220,
-      height: 120
+      width: 1100,
+      height: 500
     });
   }
 });

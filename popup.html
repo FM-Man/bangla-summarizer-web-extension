@@ -1,17 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Selected Text</title>
+  <meta charset="UTF-8">
+  <title>Bangla Text Summarizer</title>
   <style>
     body {
-      width: 200px;
-      padding: 10px;
+      font-family: Arial, sans-serif;
+      margin-top: 40;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      /* Align items to the top */
+      height: fit-content;
+      flex-direction: row;
+      /* Display sections vertically */
+    }
+
+    .text-section {
+      width: 45%;
+      border: 1px solid #941414;
+      padding: 0px 20px 20px;
+      /* margin-bottom: 20px; */
+      position: relative;
+    }
+
+
+    h2 {
+      margin-bottom: 10px;
     }
   </style>
 </head>
+
 <body>
-  <div id="selectedText"></div>
+  <div class="container">
+    <div class="text-section">
+      <h2>Document</h2>
+      <div id="textSection1">
+        <p>text section 1.</p>
+      </div>
+    </div>
+    <div class="text-section">
+      <h2>Summary</h2>
+      <div id="textSection2">
+        <p>text section 2.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="popup.js"></script>
 </body>
-</html>
 
+</html>
