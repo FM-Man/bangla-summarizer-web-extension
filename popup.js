@@ -55,21 +55,7 @@ chrome.storage.local.get("selectedText", (data) => {
         documentTextDiv.innerText = rText
       })
       .catch(error => console.log('error', error));
-
-      // selectedTextDiv.innerText = rSum;
 });
 
 
-function copyText(elementId) {
-  const textElement = document.getElementById(elementId).querySelector('p');
-  const text = textElement.innerText;
-
-  navigator.clipboard.writeText(text)
-    .then(() => {
-      alert('Text copied to clipboard: ' + text);
-    })
-    .catch(err => {
-      console.error('Could not copy text: ', err);
-    });
-}
 
