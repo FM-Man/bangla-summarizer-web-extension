@@ -2,32 +2,7 @@ chrome.storage.local.get("selectedText", (data) => {
   var selectedText = data.selectedText || "No text selected";
   var summaryTextDiv = document.getElementById("textSection2");
   var documentTextDiv = document.getElementById("textSection1");
-  // selectedTextDiv.textContent = selectedText;
-
-  // Replace with your actual API endpoint URL
-  // var apiUrl = "http://localhost:8080/api/demo";
-
-  // Perform POST API call
-  // fetch(apiUrl, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({ text: selectedText }),
-  // })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     var responseDiv = document.getElementById("response");
-  //     responseDiv.textContent = data.response;
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //     var responseDiv = document.getElementById("response");
-  //     responseDiv.textContent = "Error occurred while fetching data.";
-  //   });
-
-
-
+  
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
@@ -44,7 +19,7 @@ chrome.storage.local.get("selectedText", (data) => {
     
     var rText,rSum;
 
-    fetch("http://127.0.0.1:8000/v2/summarize", requestOptions)
+    fetch("http://127.0.0.1:8000/summarize", requestOptions)
       .then(response => response.json())
       .then(result => {
         rText = result.text;
