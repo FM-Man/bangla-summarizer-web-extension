@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Context Menu Extension",
+  "name": "সারাংশঃ Bengali Text Summarizer",
   "version": "1.0",
-  "description": "Adds a custom option to the context menu.",
+  "description": "Summarizes Bengali Text Online",
   "permissions": ["contextMenus", "storage","activeTab", "scripting", "tabs"],
   
   "background": {
