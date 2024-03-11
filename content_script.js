@@ -12,7 +12,7 @@ function runOnChange(){
 
     if (window.location.href.includes("prothomalo.com") &&
         window.location.href !== "https://www.prothomalo.com") {
-
+        console.log("url found");
         var textContent = extractText();
         // chrome.storage.local.set({ selectedText: textContent });
         
@@ -27,7 +27,7 @@ function runOnChange(){
         .then(response => response.json())
         .then(data => {
             // Open popup window and display response string
-            const popupWindow = window.open("", "Popup Window", "width=1100,height=500");
+            const popupWindow = window.open("", "Popup Window", "width=400,height=500,left=940,top=150");
             popupWindow.document.write(`
             <!DOCTYPE html>
             <html lang="en">
@@ -53,7 +53,7 @@ function runOnChange(){
                 }
             
                 .text-section {
-                width: 45%;
+                width: 90%;
                 border: 1px solid #941414;
                 padding: 0px 20px 20px;
                 /* margin-bottom: 20px; */
@@ -69,12 +69,12 @@ function runOnChange(){
             
             <body>
             <div class="container">
-                <div class="text-section">
+                <!--div class="text-section">
                 <h2>Document</h2>
                 <div id="textSection1">
                     <p>${data.text}</p>
                 </div>
-                </div>
+                </div-->
                 <div class="text-section">
                 <h2>Summary</h2>
                 <div id="textSection2">
@@ -95,9 +95,10 @@ function runOnChange(){
 
 }
 
-
+console.log("runs##################################");
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.message === 'hello') {
+        console.log("changed##################################");
         runOnChange();
     }
 });
