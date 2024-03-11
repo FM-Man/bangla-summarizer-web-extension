@@ -11,9 +11,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 function runOnChange(){
     var textContent = "";
     if (isProthomAloArticle()) {
-        console.log("url found");
         textContent = extractTextFromProthomAlo();
     }
+    else if (isIttefaqArticle()){
+        textContent = extractTextFromIttefaq();
+    }
+
     
 
 
@@ -30,7 +33,7 @@ function runOnChange(){
         }).then(response => response.json()).then(data => {
             // Open popup window and display response string
             const popupWindow = window.open("", "Popup Window", "width=400,height=500,left=940,top=150");
-            popupWindow.document.write('');
+            popupWindow.document.open();
             popupWindow.document.write(
             `<html><head>
                 <meta charset="UTF-8">
