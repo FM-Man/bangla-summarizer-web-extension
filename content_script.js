@@ -76,7 +76,7 @@ function runOnChange(){
 
 //prothom alo
 function isProthomAloArticle(){
-    if(s.includes('prothomalo')){
+    if(window.location.href.includes('prothomalo.com')){
         querys = document.querySelectorAll('.story-element .story-element-text div p');
         if(querys.length !=0)
             return true;
@@ -90,6 +90,24 @@ function extractTextFromProthomAlo() {
     document.querySelectorAll('.story-element .story-element-text div p').forEach(function (element) {
         text += element.innerText.trim() + " ";
     });
-    // console.log(text);
+    return text;
+}
+
+//ittefaq
+function isIttefaqArticle(){
+    if(window.location.href.includes('ittefaq.com.bd')){
+        querys = document.querySelectorAll('p.alignfull');
+        if(querys.length !=0)
+            return true;
+        else return false;
+    }
+    else return false;
+}
+
+function extractTextFromIttefaq() {
+    var text = "";
+    document.querySelectorAll('p.alignfull').forEach(function (element) {
+        text += element.innerText.trim() + " ";
+    });
     return text;
 }
