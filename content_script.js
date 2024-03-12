@@ -15,6 +15,9 @@ function runOnChange(){
     else if (isIttefaqArticle()){
         textContent = extractTextFromIttefaq();
     }
+    else if(isJugantorArticle()){
+        textContent= extractTextFromJugantor();
+    }
 
     
 
@@ -113,3 +116,26 @@ function extractTextFromIttefaq() {
     });
     return text;
 }
+
+//jugantor
+function isJugantorArticle(){
+    console.log("jugantor checking "+window.location.href);
+    if(window.location.href.includes('jugantor.com')){
+        console.log("jugantor");    
+        querys = document.querySelectorAll('myText > p');
+        console.log(querys);
+        if(querys.length !=0)
+            return true;
+        else return false;
+    }
+    else return false;
+}
+
+function extractTextFromJugantor() {
+    var text = "";
+    document.querySelectorAll('myText > p').forEach(function (element) {
+        text += element.innerText.trim() + " ";
+    });
+    return text;
+}
+myText > p
