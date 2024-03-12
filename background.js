@@ -22,12 +22,21 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
+
+chrome.tabs.onCreated.addListener(tab => {
+  sendMessageToTab(tab);
+});
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.url) {
-      chrome.tabs.sendMessage(tabId, {
-          message: 'hello',
-          url: changeInfo.url
-      });
+  if (changeInfo.url || changeInfo.status === 'loading') {
+      sendMessageToTab(tab);
   }
 });
+
+function sendMessageToTab(tab) {
+  chrome.tabs.sendMessage(tab.id, {
+      message: 'hello',
+      url: tab.url
+  });
+}
 

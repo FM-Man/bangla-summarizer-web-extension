@@ -1,8 +1,7 @@
 // Function to extract text from elements with specified CSS classes
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, _sender, _sendResponse) {
     if (request.message === 'hello') {
-        isProthomAloArticle();
         runOnChange();
     }
 });
@@ -19,7 +18,7 @@ function runOnChange(){
 
     
 
-
+    console.log(textContent);
 
     //fetching
     if (textContent != ""){
@@ -98,7 +97,7 @@ function extractTextFromProthomAlo() {
 
 //ittefaq
 function isIttefaqArticle(){
-    if(window.location.href.includes('ittefaq.com.bd')){
+    if(window.location.href.includes('ittefaq.com')){
         querys = document.querySelectorAll('p.alignfull');
         if(querys.length !=0)
             return true;
