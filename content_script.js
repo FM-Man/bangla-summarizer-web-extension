@@ -12,13 +12,18 @@ function runOnChange(){
     if (isProthomAloArticle()) {
         textContent = extractTextFromProthomAlo();
     }
-    else if (isIttefaqArticle()){
-        textContent = extractTextFromIttefaq();
+    else {
+        console.log("not prothom alo");
+        if (isIttefaqArticle()){
+            textContent = extractTextFromIttefaq();
+        }
+        else {
+            console.log("ittefaq");    
+            if(isJugantorArticle()){
+                textContent= extractTextFromJugantor();
+            }
+        }
     }
-    else if(isJugantorArticle()){
-        textContent= extractTextFromJugantor();
-    }
-
     
 
     console.log(textContent);
@@ -138,4 +143,3 @@ function extractTextFromJugantor() {
     });
     return text;
 }
-myText > p
